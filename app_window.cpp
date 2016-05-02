@@ -10,9 +10,16 @@ AppWindow::AppWindow ( const char* label, int x, int y, int w, int h )
    _marky = 0;
    addMenuEntry ( "Option 0", evOption0 );
    addMenuEntry ( "Option 1", evOption1 );
-     stash.push_back(new Rect(-0.6,0.6,0.8,0.6,1.0,0.0,0.0));
-     stash.push_back(new Rect(-0.6,-0.2,0.8,0.6,1.0,1.0,0.0));
-     stash.push_back(new Rect(0.1,0.7,0.8,0.6,0.0,0.0,1.0));
+     //stash.push_back(new Rect(-0.6,0.6,0.8,0.6,1.0,0.0,0.0));
+     //stash.push_back(new Rect(-0.6,-0.2,0.8,0.6,1.0,1.0,0.0));
+     stash.push_back(new Rect(-0.9,-0.1,0.1,0.8,0.0,0.0,1.0));
+     stash.push_back(new Rect(-0.7,-0.1,0.1,0.7,0.0,0.0,1.0));
+     stash.push_back(new Rect(-0.5,-0.1,0.1,0.8,0.0,0.0,1.0));
+     stash.push_back(new Rect(-0.3,-0.1,0.1,0.3,0.0,0.0,1.0));
+     stash.push_back(new Rect(-0.1,-0.1,0.1,0.5,0.0,0.0,1.0));
+     stash.push_back(new Rect(0.1,-0.1,0.1,0.4,0.0,0.0,1.0));
+     stash.push_back(new Rect(0.3,-0.1,0.1,0.66,0.0,0.0,1.0));
+     stash.push_back(new Rect(0.5,-0.1,0.1,0.3,0.0,0.0,1.0));
      yOffset=0;
      xOffset=0;
      mousedown = false;
@@ -110,6 +117,31 @@ void AppWindow::resize ( int w, int h )
    _w=w; _h=h;
  }
 
+void AppWindow::bubbleSort(){
+    bool check;
+    do{
+        check=false;
+        for(vector<Rect*>::iterator i=stash.begin();i!=stash.end();i++){
+            
+        
+        }
+        
+        
+        
+        
+    }while(check);
+
+}
+
+void AppWindow::insertionSort(){
+    
+    
+    
+}
+void AppWindow::selectionSort(){
+    
+    
+}
 // here we will redraw the scene according to the current state of the application.
 void AppWindow::draw ()
  {
@@ -122,7 +154,6 @@ void AppWindow::draw ()
 
    // Set drawing color to yellow
    //glColor3d ( 1.0, 0.9, 0.3 );
-
      for(vector<Rect*>::iterator i=stash.begin();i!=stash.end();i++){
          Vec tl,tr,br,bl;
          tl=Vec((*i)->getX(),(*i)->getY());
@@ -154,10 +185,9 @@ void AppWindow::draw ()
              glVertex2d(tl.x, tl.y);
              glVertex2d(br.x, br.y);
              
-             
-             
              glEnd();
          }
+         
          glBegin(GL_POLYGON);
          glColor3f(r,g,b);
          glVertex2d(tl.x,tl.y);

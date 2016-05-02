@@ -27,6 +27,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		06D4D3161CD7D2580078190D /* Vec.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Vec.h; sourceTree = "<group>"; };
+		06D4D3171CD7D25D0078190D /* Rect.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Rect.h; sourceTree = "<group>"; };
 		173FEF011AA63A07006CCB85 /* glutapp */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = glutapp; sourceTree = BUILT_PRODUCTS_DIR; };
 		173FEF0B1AA63AC4006CCB85 /* app_main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = app_main.cpp; sourceTree = "<group>"; };
 		173FEF0D1AA63AE0006CCB85 /* app_window.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = app_window.cpp; sourceTree = "<group>"; };
@@ -60,6 +62,8 @@
 				173FEF0F1AA63AE0006CCB85 /* glut_window.cpp */,
 				173FEF101AA63AE0006CCB85 /* glut_window.h */,
 				173FEF0B1AA63AC4006CCB85 /* app_main.cpp */,
+				06D4D3171CD7D25D0078190D /* Rect.h */,
+				06D4D3161CD7D2580078190D /* Vec.h */,
 				173FEF021AA63A07006CCB85 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -248,6 +252,7 @@
 				173FEF0A1AA63A07006CCB85 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
