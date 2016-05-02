@@ -43,8 +43,7 @@ void AppWindow::handle ( const Event& e )
     switch ( e.key )
     { case ' ': // space bar
 	   std::cout << "Space pressed.\n";
-       _markx = 1.5;
-       _marky = 1.5;
+	   bubbleSort();
        redraw();
 	   break;
 
@@ -118,7 +117,8 @@ void AppWindow::resize ( int w, int h )
  }
 
 void AppWindow::bubbleSort(){
-    bool check;
+    swap(*stash[2],*stash[5]);
+    /*bool check;
     do{
         check=false;
         for(vector<Rect*>::iterator i=stash.begin();i!=stash.end();i++){
@@ -129,8 +129,22 @@ void AppWindow::bubbleSort(){
         
         
         
-    }while(check);
+    }while(check);*/
 
+}
+
+
+void AppWindow::swap(Rect& left, Rect& right){
+	float i,j,r;
+
+	j = right.getX();
+	r = right.getX();	
+	for(i = left.getX(); i < r; i = i + 0.03){
+		left.setX(i);
+		right.setX(j);
+		draw();
+		j = j - 0.03;
+	}
 }
 
 void AppWindow::insertionSort(){
