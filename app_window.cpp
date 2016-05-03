@@ -41,8 +41,8 @@ void AppWindow::handle ( const Event& e )
 
    if ( e.type==Keyboard ) 
     switch ( e.key )
-    { case ' ': // space bar
-	   std::cout << "Space pressed.\n";
+    { case 'm': // space bar
+	   std::cout << "m pressed.\n";
 	   bubbleSort();
        redraw();
 	   break;
@@ -116,8 +116,33 @@ void AppWindow::resize ( int w, int h )
    _w=w; _h=h;
  }
 
+void arrswap(float *xp, float *yp)
+{
+    float temp = *xp;
+    *xp = *yp;
+    *yp = temp;
+}
+
+
 void AppWindow::bubbleSort(){
-    swap(*stash[2],*stash[5]);
+	cout<<"Bubble Sort"<<endl;
+	int n=8;
+	float arr[] = {-0.9,-0.7,-0.5,-0.3,-0.1,0.1,0.3,0.5};
+	cout<<arr[3]<<endl;
+
+
+	   int i, j;
+	   for (i = 0; i < n-1; i++)  {    
+	       // Last i elements are already in place   
+	       for (j = 0; j < n-i-1; j++){
+			//cout<<i<<endl; 
+		   if (arr[j] > arr[j+1]){
+			cout<<i<<endl;
+			arrswap(&arr[j], &arr[j+1]);
+		      	swap(*stash[j], *stash[j+1]);
+			}
+		}
+	}
     /*bool check;
     do{
         check=false;
@@ -139,12 +164,14 @@ void AppWindow::swap(Rect& left, Rect& right){
 
 	j = right.getX();
 	r = right.getX();	
-	for(i = left.getX(); i < r; i = i + 0.03){
+	for(i = left.getX(); i < r+0.03; i = i + 0.03){
 		left.setX(i);
 		right.setX(j);
+		cout<<"right rect: "<<right.getX()<<" left rect: "<<left.getX()<<endl;
 		draw();
 		j = j - 0.03;
 	}
+
 }
 
 void AppWindow::insertionSort(){
