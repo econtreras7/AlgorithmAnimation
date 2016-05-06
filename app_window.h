@@ -28,7 +28,7 @@ class AppWindow : public GlutWindow
      virtual void bubbleSort();
      virtual void insertionSort();
      virtual void selectionSort();
-     virtual void swap(Rect&,Rect&);
+     virtual void swap(Rect* l,Rect* r);
  };
 
 #endif // APP_WINDOW_H
