@@ -24,13 +24,13 @@ public:
     bool sel;
     
     Rect(){
-        Rx=0.0f;
-        Ry=0.0f;
-        w=0.0f;
-        h=0.0f;
-        Rr=0.0f;
-        Rg=0.0f;
-        Rb=0.0f;
+        Rx=0;
+        Ry=0;
+        w=0;
+        h=0;
+        Rr=0;
+        Rg=0;
+        Rb=0;
         
     }
     Rect(float xC, float yC, float width, float height){
@@ -38,9 +38,9 @@ public:
         Ry=yC;
         w=width;
         h=height;
-        Rr=1.0f;
-        Rg=1.0f;
-        Rb=1.0f;
+        Rr=1.0;
+        Rg=1.0;
+        Rb=1.0;
         sel=false;
     }
     Rect(float xC, float yC, float width, float height,float r,float g,float b){

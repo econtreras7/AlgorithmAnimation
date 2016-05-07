@@ -12,14 +12,14 @@ AppWindow::AppWindow ( const char* label, int x, int y, int w, int h )
    addMenuEntry ( "Option 1", evOption1 );
      //stash.push_back(new Rect(-0.6,0.6,0.8,0.6,1.0,0.0,0.0));
      //stash.push_back(new Rect(-0.6,-0.2,0.8,0.6,1.0,1.0,0.0));
-     stash.push_back(new Rect(-0.9,-0.1,0.1,-0.8,0.0,0.0,1.0));
-     stash.push_back(new Rect(-0.7,-0.1,0.1,-0.7,0.0,0.0,1.0));
-     stash.push_back(new Rect(-0.5,-0.1,0.1,-0.8,0.0,0.0,1.0));
-     stash.push_back(new Rect(-0.3,-0.1,0.1,-0.3,0.0,0.0,1.0));
-     stash.push_back(new Rect(-0.1,-0.1,0.1,-0.5,0.0,0.0,1.0));
-     stash.push_back(new Rect(0.1,-0.1,0.1,-0.4,0.0,0.0,1.0));
-     stash.push_back(new Rect(0.3,-0.1,0.1,-0.66,0.0,0.0,1.0));
-     stash.push_back(new Rect(0.5,-0.1,0.1,-0.3,0.0,0.0,1.0));
+     stash.push_back(new Rect(-0.9f,-0.1f,0.1f,-0.8f,0.0f,0.0f,1.0f));
+     stash.push_back(new Rect(-0.7f,-0.1f,0.1f,-0.7f,0.0f,0.0f,1.0f));
+     stash.push_back(new Rect(-0.5f,-0.1f,0.1f,-0.8f,0.0f,0.0f,1.0f));
+     stash.push_back(new Rect(-0.3f,-0.1f,0.1f,-0.3f,0.0f,0.0f,1.0f));
+     stash.push_back(new Rect(-0.1f,-0.1f,0.1f,-0.5f,0.0f,0.0f,1.0f));
+     stash.push_back(new Rect(0.1f,-0.1f,0.1f,-0.4f,0.0f,0.0f,1.0f));
+     stash.push_back(new Rect(0.3f,-0.1f,0.1f,-0.6f,0.0f,0.0f,1.0f));
+     stash.push_back(new Rect(0.5f,-0.1f,0.1f,-0.3f,0.0f,0.0f,1.0f));
      yOffset=0;
      xOffset=0;
      mousedown = false;
@@ -41,9 +41,13 @@ void AppWindow::handle ( const Event& e )
 
    if ( e.type==Keyboard ) 
     switch ( e.key )
-    { case 'm': // space bar
-	   std::cout << "m pressed.\n";
+    { case 'b': // space bar
+	   std::cout << "B pressed.\n";
 	   bubbleSort();
+       redraw();
+      case 'i': // space bar
+	   std::cout << "I pressed.\n";
+	   insertionSort();
        redraw();
 	   break;
 
@@ -139,21 +143,19 @@ void AppWindow::swap(Rect* left, Rect* right){
     float r = right->getX();
     float l = left->getX();
     float diff=r-l;
-    float count=0;
-    left->setX(r);
-    right->setX(l);
-    draw();
-    
-    /*do{
-     count=count+.05;
-     r=r-.05;
-     l=l+.05;
+    float count=0.0f;
+    float offset = 0.05f;
+
+    do{
+     count=count+offset;
+     r=r-offset;
+     l=l+offset;
      left->setX(l);
      right->setX(r);
      draw();
-     }while(count<diff);
-     */
-    
+	cout<<"right: "<< right->getX()<<" letf: "<<left->getX()<<endl;
+     }while(count<diff-(offset/2));
+
     //actuall swapping happens here
     Rect temp;
     temp= *left;
@@ -162,9 +164,18 @@ void AppWindow::swap(Rect* left, Rect* right){
 }
 
 void AppWindow::insertionSort(){
-    
-    
-    
+	int i,j;
+	float key = 0.0f;
+	int n=stash.size();
+	for(j=1;j<n;j++){
+		key = -stash[j]->getH();
+		i=j-1;
+		while(i>=0 && -stash[i]->getH()>key){
+			swap(stash[i], stash[i+1]);
+			i--;
+		}
+	}
+
 }
 void AppWindow::selectionSort(){
     
