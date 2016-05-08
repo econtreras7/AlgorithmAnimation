@@ -12,7 +12,7 @@ AppWindow::AppWindow ( const char* label, int x, int y, int w, int h )
    addMenuEntry ( "Option 1", evOption1 );
      //stash.push_back(new Rect(-0.6,0.6,0.8,0.6,1.0,0.0,0.0));
      //stash.push_back(new Rect(-0.6,-0.2,0.8,0.6,1.0,1.0,0.0));
-     stash.push_back(new Rect(-0.9f,-0.1f,0.1f,-0.8f,0.0f,0.0f,1.0f));
+     stash.push_back(new Rect(-0.9f,-0.1f,0.1f,-0.9f,0.0f,0.0f,1.0f));
      stash.push_back(new Rect(-0.7f,-0.1f,0.1f,-0.7f,0.0f,0.0f,1.0f));
      stash.push_back(new Rect(-0.5f,-0.1f,0.1f,-0.8f,0.0f,0.0f,1.0f));
      stash.push_back(new Rect(-0.3f,-0.1f,0.1f,-0.3f,0.0f,0.0f,1.0f));
@@ -43,6 +43,7 @@ void AppWindow::handle ( const Event& e )
     switch ( e.key )
     { case 'b': // space bar
 	   std::cout << "B pressed.\n";
+            //insertionSort();
 	   bubbleSort();
        //redraw();
       case 'i': // space bar
@@ -50,11 +51,17 @@ void AppWindow::handle ( const Event& e )
 	   insertionSort();
        //redraw();
 	   break;
+        case 's': // space bar
+            std::cout << "S pressed.\n";
+            selectionSort();
+            
+            //redraw();
+            break;
         case 'r': // space bar
             std::cout << "Redraw.\n";
             //insertionSort();
             stash.clear();
-            stash.push_back(new Rect(-0.9f,-0.1f,0.1f,-0.8f,0.0f,0.0f,1.0f));
+            stash.push_back(new Rect(-0.9f,-0.1f,0.1f,-0.9f,0.0f,0.0f,1.0f));
             stash.push_back(new Rect(-0.7f,-0.1f,0.1f,-0.7f,0.0f,0.0f,1.0f));
             stash.push_back(new Rect(-0.5f,-0.1f,0.1f,-0.8f,0.0f,0.0f,1.0f));
             stash.push_back(new Rect(-0.3f,-0.1f,0.1f,-0.3f,0.0f,0.0f,1.0f));
@@ -64,7 +71,6 @@ void AppWindow::handle ( const Event& e )
             stash.push_back(new Rect(0.5f,-0.1f,0.1f,-0.3f,0.0f,0.0f,1.0f));
             redraw();
             break;
-
 	  case 27: // Esc was pressed
 	   exit(1);
 	}
@@ -154,7 +160,7 @@ void AppWindow::swap(Rect* left, Rect* right){
     float l = left->getX();
     float diff=r-l;
     float count=0.0f;
-    float offset = 0.05f;
+    float offset = 0.1f;
 
     do{
      count=count+offset;
@@ -189,7 +195,28 @@ void AppWindow::insertionSort(){
 }
 void AppWindow::selectionSort(){
     
+    int i, j, min_idx;
+    float n=stash.size();
     
+    // One by one move boundary of unsorted subarray
+    for (i = 0; i < n-1; i++)
+    {
+        // Find the minimum element in unsorted array
+        min_idx = i;
+        for (j = i+1; j < n; j++){
+            if (-stash[j]->getH() < -stash[min_idx]->getH()){
+                min_idx = j;
+            }
+        }
+        // Swap the found minimum element with the first element
+        if(i<min_idx){
+            swap(stash[i], stash[min_idx]);
+        }
+        else{
+            
+        swap(stash[min_idx], stash[i]);
+        }
+    }
 }
 // here we will redraw the scene according to the current state of the application.
 void AppWindow::draw ()
