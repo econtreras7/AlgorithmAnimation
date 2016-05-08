@@ -44,12 +44,26 @@ void AppWindow::handle ( const Event& e )
     { case 'b': // space bar
 	   std::cout << "B pressed.\n";
 	   bubbleSort();
-       redraw();
+       //redraw();
       case 'i': // space bar
 	   std::cout << "I pressed.\n";
 	   insertionSort();
-       redraw();
+       //redraw();
 	   break;
+        case 'r': // space bar
+            std::cout << "Redraw.\n";
+            //insertionSort();
+            stash.clear();
+            stash.push_back(new Rect(-0.9f,-0.1f,0.1f,-0.8f,0.0f,0.0f,1.0f));
+            stash.push_back(new Rect(-0.7f,-0.1f,0.1f,-0.7f,0.0f,0.0f,1.0f));
+            stash.push_back(new Rect(-0.5f,-0.1f,0.1f,-0.8f,0.0f,0.0f,1.0f));
+            stash.push_back(new Rect(-0.3f,-0.1f,0.1f,-0.3f,0.0f,0.0f,1.0f));
+            stash.push_back(new Rect(-0.1f,-0.1f,0.1f,-0.5f,0.0f,0.0f,1.0f));
+            stash.push_back(new Rect(0.1f,-0.1f,0.1f,-0.4f,0.0f,0.0f,1.0f));
+            stash.push_back(new Rect(0.3f,-0.1f,0.1f,-0.6f,0.0f,0.0f,1.0f));
+            stash.push_back(new Rect(0.5f,-0.1f,0.1f,-0.3f,0.0f,0.0f,1.0f));
+            redraw();
+            break;
 
 	  case 27: // Esc was pressed
 	   exit(1);
@@ -135,10 +149,6 @@ void AppWindow::bubbleSort(){
         }
     }
 }
-
-
-
-
 void AppWindow::swap(Rect* left, Rect* right){
     float r = right->getX();
     float l = left->getX();
