@@ -20,6 +20,8 @@ AppWindow::AppWindow ( const char* label, int x, int y, int w, int h )
      stash.push_back(new Rect(0.1f,-0.1f,0.1f,-0.4f,0.0f,0.0f,1.0f));
      stash.push_back(new Rect(0.3f,-0.1f,0.1f,-0.6f,0.0f,0.0f,1.0f));
      stash.push_back(new Rect(0.5f,-0.1f,0.1f,-0.3f,0.0f,0.0f,1.0f));
+	 stash.push_back(new Rect(0.7f, -0.1f, 0.1f, -0.6f, 0.0f, 0.0f, 1.0f));
+	 stash.push_back(new Rect(0.9f, -0.1f, 0.1f, -0.3f, 0.0f, 0.0f, 1.0f));
      yOffset=0;
      xOffset=0;
      mousedown = false;
@@ -46,11 +48,11 @@ void AppWindow::handle ( const Event& e )
             //insertionSort();
 	   bubbleSort();
        //redraw();
-      case 'i': // space bar
-	   std::cout << "I pressed.\n";
-	   insertionSort();
-       //redraw();
-	   break;
+		case 'i': // space bar
+		   std::cout << "I pressed.\n";
+		   insertionSort();
+		   //redraw();
+		   break;
         case 's': // space bar
             std::cout << "S pressed.\n";
             selectionSort();
@@ -69,6 +71,8 @@ void AppWindow::handle ( const Event& e )
             stash.push_back(new Rect(0.1f,-0.1f,0.1f,-0.4f,0.0f,0.0f,1.0f));
             stash.push_back(new Rect(0.3f,-0.1f,0.1f,-0.6f,0.0f,0.0f,1.0f));
             stash.push_back(new Rect(0.5f,-0.1f,0.1f,-0.3f,0.0f,0.0f,1.0f));
+			stash.push_back(new Rect(0.7f, -0.1f, 0.1f, -0.6f, 0.0f, 0.0f, 1.0f));
+			stash.push_back(new Rect(0.9f, -0.1f, 0.1f, -0.3f, 0.0f, 0.0f, 1.0f));
             redraw();
             break;
 	  case 27: // Esc was pressed
@@ -160,7 +164,7 @@ void AppWindow::swap(Rect* left, Rect* right){
     float l = left->getX();
     float diff=r-l;
     float count=0.0f;
-    float offset = 0.1f;
+    float offset = 0.003f;
 
     do{
      count=count+offset;
@@ -203,20 +207,15 @@ void AppWindow::selectionSort(){
     {
         // Find the minimum element in unsorted array
         min_idx = i;
-        for (j = i+1; j < n; j++){
-            if (-stash[j]->getH() < -stash[min_idx]->getH()){
-                min_idx = j;
-            }
-        }
-        // Swap the found minimum element with the first element
-        if(i<min_idx){
-            swap(stash[i], stash[min_idx]);
-        }
-        else{
-            
-        swap(stash[min_idx], stash[i]);
-        }
-    }
+        for (j = i+1; j < n; j++)
+			if (-stash[j]->getH() < -stash[min_idx]->getH())
+				min_idx = j;
+
+				// Swap the found minimum element with the first element
+				if (i != min_idx) {
+					swap(stash[i], stash[min_idx]);
+				}
+	}
 }
 // here we will redraw the scene according to the current state of the application.
 void AppWindow::draw ()

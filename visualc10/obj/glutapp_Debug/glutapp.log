@@ -1,0 +1,3 @@
+﻿  app_window.cpp
+c:\users\dgist\documents\github\algorithmanimation\app_window.cpp(203): warning C4244: 'initializing': conversion from 'unsigned int' to 'float', possible loss of data
+  glutapp.vcxproj -> C:\Users\dgist\Documents\GitHub\AlgorithmAnimation\visualc10\obj\glutapp_Debug\glutapp.exe
