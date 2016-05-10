@@ -29,6 +29,8 @@ class AppWindow : public GlutWindow
      virtual void bubbleSort();
      virtual void insertionSort();
      virtual void selectionSort();
+     virtual void quickSort(int arr[], int left, int right);
+     virtual void displayText( float x, float y, int r, int g, int b, const char *string );
      //virtual int partition(vector<Rect*> s,int l,int h);
      //virtual void quickSort(vector<Rect*> s,int l,int h);
      

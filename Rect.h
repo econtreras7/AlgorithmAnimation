@@ -88,10 +88,15 @@ public:
     void select(){
         sel=true;
     }
-    void setR( float rgb){
-        Rr=rgb;
+    void setR( float r){
+        Rr=r;
     }
-    
+    void setG( float g){
+        Rg=g;
+    }
+    void setB( float b){
+        Rb=b;
+    }
     void setX(float xC){
         Rx=xC;
     }

@@ -10,11 +10,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "app_window.cpp"
-            timestampString = "484554012.45688"
+            timestampString = "484601177.560762"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "335"
-            endingLineNumber = "335"
+            startingLineNumber = "398"
+            endingLineNumber = "398"
             landmarkName = "AppWindow::draw ()"
             landmarkType = "5">
          </BreakpointContent>
@@ -26,11 +26,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "app_window.cpp"
-            timestampString = "484547795.890742"
+            timestampString = "484601177.560762"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "92"
-            endingLineNumber = "92"
+            startingLineNumber = "103"
+            endingLineNumber = "103"
             landmarkName = "AppWindow::handle ( const Event&amp; e )"
             landmarkType = "5">
          </BreakpointContent>
