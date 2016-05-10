@@ -34,6 +34,7 @@ void AppWindow::windowToScene ( float& x, float &y )
  {
    x = (2.0f*(x/float(_w))) - 1.0f;
    y = 1.0f - (2.0f*(y/float(_h)));
+     
  }
 
 // Called every time there is a window event
@@ -48,6 +49,7 @@ void AppWindow::handle ( const Event& e )
             //insertionSort();
 	   bubbleSort();
        //redraw();
+            break;
 		case 'i': // space bar
 		   std::cout << "I pressed.\n";
 		   insertionSort();
@@ -59,10 +61,15 @@ void AppWindow::handle ( const Event& e )
             
             //redraw();
             break;
-        case 'r': // space bar
+        case 'r':
             std::cout << "Redraw.\n";
+            
             //insertionSort();
             stash.clear();
+            
+            
+            
+            
             stash.push_back(new Rect(-0.9f,-0.1f,0.1f,-0.9f,0.0f,0.0f,1.0f));
             stash.push_back(new Rect(-0.7f,-0.1f,0.1f,-0.7f,0.0f,0.0f,1.0f));
             stash.push_back(new Rect(-0.5f,-0.1f,0.1f,-0.8f,0.0f,0.0f,1.0f));
@@ -75,7 +82,14 @@ void AppWindow::handle ( const Event& e )
 			stash.push_back(new Rect(0.9f, -0.1f, 0.1f, -0.3f, 0.0f, 0.0f, 1.0f));
             redraw();
             break;
-	  case 27: // Esc was pressed
+            
+        case 'q':
+            std::cout << "S pressed.\n";
+            int n = stash.size();
+            //quickSort(stash,0, n-1);
+            break;
+            
+	  //case 27: // Esc was pressed
 	   exit(1);
 	}
 
@@ -144,9 +158,36 @@ void AppWindow::resize ( int w, int h )
    _w=w; _h=h;
  }
 
+void AppWindow::swap(Rect* left, Rect* right){
+    float r = right->getX();
+    float l = left->getX();
+    float diff=r-l;
+    float count=0.0f;
+    float offset = 0.01f;
+    float rgb=1;
+    do{
+     count=count+offset;
+     r=r-offset;
+     l=l+offset;
+     left->setX(l);
+        right->setX(r);
+        left->setR(rgb);
+        right->setR(rgb);
+     draw();
+        left->setR(0.0);
+        right->setR(0.0);
+	cout<<"right: "<< right->getX()<<" letf: "<<left->getX()<<endl;
+     }while(count<diff-(offset/2));
+
+    //actuall swapping happens here
+    Rect temp;
+    temp= *left;
+    *left=*right;
+    *right=temp;
+}
 
 void AppWindow::bubbleSort(){
-	cout<<"Bubble Sort"<<endl;
+    cout<<"Bubble Sort"<<endl;
 	   int n=stash.size();
     Rect tmp;
     int j, i;
@@ -159,30 +200,6 @@ void AppWindow::bubbleSort(){
         }
     }
 }
-void AppWindow::swap(Rect* left, Rect* right){
-    float r = right->getX();
-    float l = left->getX();
-    float diff=r-l;
-    float count=0.0f;
-    float offset = 0.003f;
-
-    do{
-     count=count+offset;
-     r=r-offset;
-     l=l+offset;
-     left->setX(l);
-     right->setX(r);
-     draw();
-	cout<<"right: "<< right->getX()<<" letf: "<<left->getX()<<endl;
-     }while(count<diff-(offset/2));
-
-    //actuall swapping happens here
-    Rect temp;
-    temp= *left;
-    *left=*right;
-    *right=temp;
-}
-
 void AppWindow::insertionSort(){
 	int i,j;
 	float key = 0.0f;
@@ -217,6 +234,52 @@ void AppWindow::selectionSort(){
 				}
 	}
 }
+/*
+ int AppWindow:: partition(vector<Rect*> s,int l,int h){
+    
+    int pivot = -stash[h]->getH();    // pivot
+    int i = (l - 1);  // Index of smaller element
+    
+    for (int j = l; j <= h- 1; j++)
+    {
+        // If current element is smaller than or
+        // equal to pivot
+        if (-stash[j]->getH() <= pivot)
+        {
+            i++;    // increment index of smaller element
+            if(i>j){
+               swap(stash[j], stash[i]);
+            }
+            else{
+            swap(stash[i], stash[j]);
+            }
+        }
+    }
+     if((i+1)>h){
+         swap(stash[h], stash[i+1]);
+     }
+     else{
+    swap(stash[i + 1], stash[h]);
+     }
+    return (i + 1);
+    
+}
+void AppWindow:: quickSort(vector<Rect*> s,int l,int h){
+    //int l=0;
+    //int h=stash.size()-1;
+    if (l < h)
+    {
+ 
+        int pi = partition(stash, l, h);
+        
+        // Separately sort elements before
+        // partition and after partition
+        quickSort(stash , l, pi - 1);
+        quickSort(stash, pi + 1, h);
+    }
+    
+}
+*/
 // here we will redraw the scene according to the current state of the application.
 void AppWindow::draw ()
  {

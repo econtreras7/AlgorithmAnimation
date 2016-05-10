@@ -25,10 +25,13 @@ class AppWindow : public GlutWindow
     virtual void handle ( const Event& e );
     virtual void draw ();
     virtual void resize ( int w, int h );
+     virtual void swap(Rect* l,Rect* r);
      virtual void bubbleSort();
      virtual void insertionSort();
      virtual void selectionSort();
-     virtual void swap(Rect* l,Rect* r);
+     //virtual int partition(vector<Rect*> s,int l,int h);
+     //virtual void quickSort(vector<Rect*> s,int l,int h);
+     
  };
 
 #endif // APP_WINDOW_H

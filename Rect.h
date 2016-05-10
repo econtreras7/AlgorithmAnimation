@@ -76,6 +76,7 @@ public:
         return Rb;
     }
     
+    
     void deselect(){
          sel=false;
     }
@@ -86,6 +87,9 @@ public:
     
     void select(){
         sel=true;
+    }
+    void setR( float rgb){
+        Rr=rgb;
     }
     
     void setX(float xC){
